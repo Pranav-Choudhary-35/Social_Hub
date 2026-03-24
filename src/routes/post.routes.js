@@ -3,17 +3,19 @@ const postRouter=express.Router();
 const postController=require('../controllers/post.controller')
 const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage()});
+const identifyUser=require('../middleware/auth.middleware');
+
 //POST  /api/posts {protected}
 
-postRouter.post('/',upload.single("image"), postController.createPostController);
+postRouter.post('/',upload.single("image"),identifyUser, postController.createPostController);
 
 //GET  /api/posts/  [protected]
 
-postRouter.get("/",postController.getPostcontroller);
+postRouter.get("/",identifyUser,postController.getPostcontroller);
 
 //GET /api/posts/details/:postid
 //return detail about specific post with the id.also check whether the post belongs to the user that is requesting
 
-postRouter.get('/details/:postId',postController.getPostDetails)
+postRouter.get('/details/:postId',identifyUser,postController.getPostDetails)
 
 module.exports=postRouter;
