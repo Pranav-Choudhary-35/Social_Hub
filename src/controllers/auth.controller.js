@@ -69,7 +69,7 @@ const user=await userModel.findOne({
     ]
 })
 if(!user){
-    res.status(404).json({
+    return res.status(404).json({
 message:"user not found"
     });
 }
@@ -97,7 +97,8 @@ res.status(200).json({
     user:{
         username:user.username,
         email:user.email,
-        bio:user.bio
+        bio:user.bio,
+        profileImage:user.profileImage
     }
 })
 
