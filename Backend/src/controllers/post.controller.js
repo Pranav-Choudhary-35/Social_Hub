@@ -88,11 +88,39 @@ return res.status(200).json({
 }
 
 
+//api/posts/like/:postid
+async function likePostController(req,res){
 
+    const userId=req.user.id;
+    const postId=req.params.postId;
+
+    const post=await postModel.findById(postId);
+
+    if(!post){
+        return res.status(404).json({
+            message:"post not found"
+        })
+    }
+
+    if(post.likes.includes(userId)){
+        return res.status(200).json({
+            message:"you have already liked this post"
+        })
+    }
+
+    post.likes.push(userId);
+    await post.save();
+
+    res.status(200).json({
+        message:"post liked successfully",
+        post
+    })
+
+}
 
 module.exports={
     createPostController,
     getPostcontroller,
-    getPostDetails
+    getPostDetails,likePostController
 }
 
