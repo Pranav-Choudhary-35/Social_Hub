@@ -1,12 +1,14 @@
-
+import React from 'react'
+import { RouterProvider } from 'react-router'
+import AppRoutes  from './AppRoutes'
+import './style.scss'
 
 function App() {
 
 
   return (
     <>
-     <h1>hlo ladle</h1>
-     {console.log("frontend working properly")}
+   <AppRoutes />
     </>
   )
 }
