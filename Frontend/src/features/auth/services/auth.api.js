@@ -1,16 +1,16 @@
-import axios from "axios";
-const api=axios.create({
-  baseURL:'http://localhost:8080',
-  withCredentials:true
-})
+import axios from 'axios';
 
+
+const api= axios.create({
+    baseURL: "http://localhost:8080/api/auth",
+    withCredentials:true,
+});
 
 //register api function
-
 export async function register(username,email,password){
 
   try{
- const response = await api.post('/api/auth/register',{
+ const response = await api.post('/register',{
     username,email,password,
   })
   
@@ -24,8 +24,9 @@ export async function register(username,email,password){
 //login api function
 
 export async function login(username,password){
+
   try{
-    const response = await api.post('/api/auth/login', {
+    const response = await api.post('/login', {
       username, password
   })
 
@@ -46,6 +47,3 @@ export async function getMe(){
     throw(err);
   }
 }
-
-
-

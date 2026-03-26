@@ -1,8 +1,9 @@
-import React from 'react'
-import { RouterProvider } from 'react-router'
-import AppRoutes  from './AppRoutes'
-import './style.scss'
-import { AuthProvider } from './Features/auth/auth.context'
+import './Shared/global.scss';
+import router from './AppRoutes';
+import { RouterProvider } from 'react-router';
+import { AuthProvider } from './features/auth.context';
+
+
 function App() {
 
 
@@ -10,8 +11,8 @@ function App() {
     
     <>
     <AuthProvider>
-   <AppRoutes />
-   </AuthProvider>
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
     </>
   )
 }

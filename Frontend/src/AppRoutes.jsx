@@ -1,20 +1,23 @@
-import {BrowserRouter,Routes,Route} from 'react-router';
+import {BrowserRouter, createBrowserRouter} from 'react-router';
+import Login from './features/auth/pages/Login';
+import Register from './features/auth/pages/Register';
+import Home from './features/auth/pages/Home';
 
-import Login from './Features/auth/pages/Login';
-import Register from './Features/auth/pages/Register';
-import Home from './Features/auth/pages/Home'
-import './style.scss'
+const router=createBrowserRouter([
+{
+path:'/',
+element:<Home/>
+},
 
-function AppRoutes() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/home" element={<Home/>} />
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    {
+path:'/login',
+element:<Login/>
+},
+{
+path:'register',
+element:<Register/>
+},
 
-export default AppRoutes;
+]);
+
+export default router;
