@@ -15,7 +15,8 @@ type:String,
     },
     password:{
 type:String,
-      required:[true, "password is required"]
+      required:[true, "password is required"],
+    Select: false
     },
     bio:String,
     
