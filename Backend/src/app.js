@@ -17,7 +17,7 @@ app.use(cors({
     origin: [
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "https://your-render-url.onrender.com"
+        "https://social-hub-backend-project.onrender.com"
     ],
 }));
 
