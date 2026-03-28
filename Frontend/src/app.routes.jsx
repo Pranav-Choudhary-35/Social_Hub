@@ -7,7 +7,7 @@ import CreatePost from "./features/Posts/pages/CreatePost"
 
 export const router = createBrowserRouter([
     {
-        path: "/login",
+        path: "/",
         element: <Login />
     },
     {
@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
         element: <Register />
     },
     {
-        path: '/',
+        path: '/feed',
         element: <Feed />
     },
     {

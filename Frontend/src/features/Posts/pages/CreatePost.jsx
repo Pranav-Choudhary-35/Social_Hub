@@ -18,7 +18,7 @@ const CreatePost = () => {
 
         await handleCreatePost(file,caption)
 
-        navigate('/')
+        navigate('/feed')
 
     }
 
