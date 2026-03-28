@@ -5,32 +5,41 @@ const multer=require("multer");
 const upload=multer({storage:multer.memoryStorage()});
 const identifyUser=require('../middleware/auth.middleware');
 
-//POST  /api/posts {protected}
-
-postRouter.post('/',upload.single("image"),identifyUser, postController.createPostController);
-
-//GET  /api/posts/  [protected]
+/**
+ * @route POST /api/posts [protected]
+ * @description Create a post with the content and image (optional) provided in the request body. The post should be associated with the user that the request come from
+ */
+postRouter.post("/", upload.single("image"), identifyUser, postController.createPostController)
 
 
 /**
- * @route //GET /api/posts/details/:postid
- * @desc return detail about specific post with the id.also check whether the post belongs to the user that is requesting
+ * @route GET /api/posts/ [protected]
+ * @description Get all the posts created by the user that the request come from. also return the total number of posts created by the user
  */
-postRouter.get("/",identifyUser,postController.getPostcontroller);
+postRouter.get("/", identifyUser, postController.getPostController)
 
-postRouter.get('/details/:postId',identifyUser,postController.getPostDetails)
 
 /**
- * @route //GET /api/posts/like/:postid
- * @desc like a post with the given id by the user that is requesting
+ * @route GET /api/posts/details/:postid
+ * @description return an detail about specific post with the id. also check whether the post belongs to the user that the request come from
  */
-postRouter.get('/like/:postId',identifyUser,postController.likePostController);
+postRouter.get("/details/:postId", identifyUser, postController.getPostDetailsController)
+
 
 /**
- * @route //GET /api/posts/feed/:postid
- * @description get all the posst created in the db
+ * @route POST /api/posts/like/:postid
+ * @description like a post with the id provided in the request params. 
  */
+postRouter.post("/like/:postId", identifyUser, postController.likePostController)
+postRouter.post("/unlike/:postId", identifyUser, postController.unLikePostController)
 
-postRouter.get('/feed',identifyUser,postController.getFeedPostsController);
+
+/**
+ * @route GET /api/posts/feed
+ * @description get all the post created in the DB
+ * @access private
+ */
+postRouter.get("/feed", identifyUser, postController.getFeedController)
+
 
 module.exports=postRouter;

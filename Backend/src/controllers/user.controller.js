@@ -1,5 +1,5 @@
 const followModel = require('../models/follow.model');
-const userModel = require('../models/schema');
+const userModel = require('../models/user.model');
 
 // Send follow request
 async function followUserController(req, res) {

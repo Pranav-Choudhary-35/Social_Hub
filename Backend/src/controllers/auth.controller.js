@@ -1,7 +1,7 @@
 const bcrypt=require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
-const userModel = require('../models/schema');
+const userModel = require('../models/user.model');
 
 //register route
 
