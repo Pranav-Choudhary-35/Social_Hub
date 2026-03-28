@@ -9,8 +9,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 
-app.use(express.json());
-app.use(cookieParser());
+
 
 app.use(cors({
     credentials: true,
@@ -39,8 +38,7 @@ app.use("/api/auth",authRouter);
 app.use("/api/posts",postRouter)
 app.use("/api/users",userRouter);
 
-
-app.get("*", (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(__dirname, "../public", "index.html"));
 });
 
